@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable require-jsdoc */
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import one from '/1.png';
 import two from '/2.png';
@@ -13,6 +13,7 @@ export default function Dice() {
   const roll = useSelector((state) => state.dice);
   const essay = useSelector((state) => state.essay);
   const cache = useSelector((state) => state.cache);
+  const [v, setV] = useState();
   const dispatch = useDispatch();
   const DiceImage = () => {
     if (roll === 1) {
@@ -41,6 +42,12 @@ export default function Dice() {
   };
   return (
     <div>
+      <div>
+
+        <input type="text" onChange={(e) => setV(e.target.value)} />
+        <button className='btn btn-primary m-5' onClick={() => dispatch({type: 'updateCache', payload: v})}>Cache</button>
+
+      </div>
       <button className='btn btn-primary m-5' onClick={() => dispatch({type: 'roll'})}>Roll</button>
       <button className='btn btn-error m-5' onClick={() => dispatch({type: 'reset'})}>Reset</button>
       <div className='flex justify-center'>
