@@ -8,7 +8,7 @@ const diceReducer = (state = {dice: 1, essay: 12, cache: 0}, action) => {
     case 'roll':
       return {dice: Math.floor(Math.random() * 6 + 1), essay: Math.max(state.essay - 1, 0), cache: state.cache};
     case 'reset':
-      return {dice: 1, essay: 12, cache: state.cache};
+      return {dice: 1, essay: 12, cache: 0};
     default:
       return state;
   }
